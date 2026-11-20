@@ -1,12 +1,13 @@
-
 package com.dinurobongtubo;
 
-import javafx.fxml.FXML;
 import java.io.IOException;
+
+import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.event.ActionEvent;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.event.ActionEvent;
 
 public class StudentDashboardController {
 
@@ -23,22 +24,7 @@ public class StudentDashboardController {
     private Label profileInitials;
 
     @FXML
-    private void showBrowseItems() throws IOException {
-        App.setRoot("browse-items");
-    }
-
-    @FXML
-    private void showMyRequests() throws IOException {
-        App.setRoot("my-requests");
-    }
-    @FXML
-    private void showBorrowedReturns() throws IOException {
-        App.setRoot("borrowed-returns");
-    }
-    @FXML
-    private void showLiabilities() throws IOException {
-        App.setRoot("liabilities");
-    }
+    private TextField dashboardSearchField;
 
     @FXML
     public void initialize() {
@@ -51,40 +37,100 @@ public class StudentDashboardController {
             name = "Student";
         }
 
-        if (studentId == null) {
+        if (studentId == null || studentId.isBlank()) {
             studentId = "No Student ID";
         }
 
-        if (department == null) {
+        if (department == null || department.isBlank()) {
             department = "No Department";
         }
 
+        // Welcome message
         welcomeLabel.setText(
             "Welcome back, " + name +
             " — Track your campus equipment borrows and requests."
         );
 
+        // Student profile
         profileName.setText(name);
         profileDetails.setText(studentId + " • " + department);
 
+        // Generate student initials
         String[] nameParts = name.trim().split("\\s+");
-
         String initials = "";
 
         if (nameParts.length >= 2) {
             initials = nameParts[0].substring(0, 1)
                     + nameParts[nameParts.length - 1].substring(0, 1);
-        } else if (!nameParts[0].isEmpty()) {
+        } else if (nameParts.length == 1 && !nameParts[0].isEmpty()) {
             initials = nameParts[0].substring(0, 1);
         }
 
         profileInitials.setText(initials.toUpperCase());
+
+        // Search field: press Enter to open Browse Items
+        if (dashboardSearchField != null) {
+            dashboardSearchField.setOnAction(event -> {
+                try {
+                    showBrowseItems();
+                } catch (IOException e) {
+                    showError("Unable to open Browse Items.");
+                    e.printStackTrace();
+                }
+            });
+        }
     }
+
+    // NAVIGATION
 
     @FXML
     private void showDashboard() {
         // Already on the dashboard.
     }
+
+    @FXML
+    private void showBrowseItems() throws IOException {
+        App.setRoot("browse-items");
+    }
+
+    @FXML
+    private void showMyRequests() throws IOException {
+        App.setRoot("my-requests");
+    }
+
+    @FXML
+    private void showBorrowedReturns() throws IOException {
+        App.setRoot("borrowed-returns");
+    }
+
+    @FXML
+    private void showLiabilities() throws IOException {
+        App.setRoot("liabilities");
+    }
+
+    // DASHBOARD SHORTCUTS
+
+    @FXML
+    private void openBrowseItems() throws IOException {
+        showBrowseItems();
+    }
+
+    @FXML
+    private void openMyRequests() throws IOException {
+        showMyRequests();
+    }
+
+    // ERROR MESSAGE
+
+    private void showError(String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("HiramMate");
+        alert.setHeaderText("Something went wrong");
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
+    // COMING SOON MESSAGE
 
     @FXML
     private void showComingSoon(ActionEvent event) {

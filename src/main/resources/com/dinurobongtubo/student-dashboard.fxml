@@ -18,181 +18,205 @@
             xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="com.dinurobongtubo.StudentDashboardController"
             stylesheets="@student-dashboard.css"
-            prefWidth="1100" prefHeight="700"
+            prefWidth="1100"
+            prefHeight="700"
             styleClass="app-background">
 
-    <!-- LEFT SIDEBAR -->
+    <!-- SIDEBAR -->
     <left>
-        <VBox prefWidth="250" styleClass="sidebar">
+        <VBox prefWidth="250" minWidth="250" styleClass="sidebar">
 
-            <!-- BRAND -->
-            <HBox alignment="CENTER_LEFT" spacing="12" styleClass="brand">
-                <Region prefWidth="24" prefHeight="24"
-                        minWidth="24" minHeight="24"
+            <HBox alignment="CENTER_LEFT"
+                  spacing="12"
+                  styleClass="brand">
+                <Region prefWidth="28"
+                        prefHeight="28"
+                        minWidth="28"
+                        minHeight="28"
                         styleClass="brand-mark"/>
-                <Label text="HiramMate" styleClass="brand-name"/>
+                <VBox spacing="2">
+                    <Label text="HiramMate" styleClass="brand-name"/>
+                    <Label text="STUDENT PORTAL" styleClass="brand-caption"/>
+                </VBox>
             </HBox>
 
-            <!-- NAVIGATION -->
-            <VBox spacing="5" styleClass="navigation">
-
+            <VBox spacing="7" styleClass="navigation">
                 <Label text="STUDENT MENU" styleClass="menu-heading"/>
 
-                <Button text="Dashboard"
+                <Button text="▦    Dashboard"
                         onAction="#showDashboard"
                         maxWidth="Infinity"
                         styleClass="nav-button nav-button-active"/>
 
-                <Button text="Browse Items"
+                <Button text="▤    Browse Items"
                         onAction="#showBrowseItems"
-                        styleClass="nav-button"
-                        maxWidth="Infinity"/>
+                        maxWidth="Infinity"
+                        styleClass="nav-button"/>
 
-                <Button text="My Requests"
+                <Button text="▧    My Requests"
                         onAction="#showMyRequests"
-                        styleClass="nav-button"
-                        maxWidth="Infinity"/>
+                        maxWidth="Infinity"
+                        styleClass="nav-button"/>
 
-                <Button text="Borrowed &amp; Returns"
-                onAction="#showBorrowedReturns"
-                styleClass="nav-button"/>
+                <Button text="↻    Borrowed &amp; Returns"
+                        onAction="#showBorrowedReturns"
+                        maxWidth="Infinity"
+                        styleClass="nav-button"/>
 
-                <Button text="Liabilities"
-                onAction="#showLiabilities"
-                styleClass="nav-button"/>
-
+                <Button text="₱    Liabilities"
+                        onAction="#showLiabilities"
+                        maxWidth="Infinity"
+                        styleClass="nav-button"/>
             </VBox>
 
             <Region VBox.vgrow="ALWAYS"/>
 
-            <!-- STUDENT PROFILE -->
             <VBox styleClass="profile-container">
-                <HBox spacing="10" alignment="CENTER_LEFT"
+                <Label text="SIGNED IN AS" styleClass="menu-heading"/>
+                <HBox spacing="11"
+                      alignment="CENTER_LEFT"
                       styleClass="profile-card">
 
                     <Label fx:id="profileInitials"
                            text="ST"
                            styleClass="profile-initials"/>
 
-                    <VBox spacing="3" HBox.hgrow="ALWAYS">
+                    <VBox spacing="4" HBox.hgrow="ALWAYS">
                         <Label fx:id="profileName"
                                text="Student Name"
                                styleClass="profile-name"/>
-
                         <Label fx:id="profileDetails"
                                text="Student ID • Department"
-                               styleClass="profile-details"/>
+                               styleClass="profile-details"
+                               wrapText="true"/>
                     </VBox>
-
                 </HBox>
             </VBox>
-
         </VBox>
     </left>
 
-    <!-- MAIN CONTENT -->
+    <!-- MAIN AREA -->
     <center>
         <ScrollPane fitToWidth="true"
                     hbarPolicy="NEVER"
                     styleClass="main-scroll">
 
-            <VBox spacing="28" styleClass="main-content">
+            <VBox spacing="25" styleClass="main-content">
 
-                <!-- PAGE HEADER -->
+                <!-- HEADER -->
                 <HBox alignment="CENTER_LEFT" spacing="15">
-
-                    <VBox spacing="5" HBox.hgrow="ALWAYS">
-                        <Label text="Student dashboard"
+                    <VBox spacing="6" HBox.hgrow="ALWAYS">
+                        <Label text="Student Dashboard"
                                styleClass="page-title"/>
-
                         <Label fx:id="welcomeLabel"
                                text="Welcome back! Track your campus equipment borrows and requests."
-                               styleClass="page-subtitle"/>
+                               styleClass="page-subtitle"
+                               wrapText="true"/>
                     </VBox>
 
                     <HBox spacing="10" alignment="CENTER_RIGHT">
-                        <TextField fx:id="dashboardSearchField"
-                                   promptText="Search items..."
-                                   prefWidth="190"
+                        <TextField promptText="Search items..."
+                                   prefWidth="185"
                                    styleClass="search-field"/>
 
                         <Button text="+ Borrow item"
-                                onAction="#showComingSoon"
+                                onAction="#showBrowseItems"
                                 styleClass="primary-button"/>
                     </HBox>
-
                 </HBox>
 
-                <!-- SUMMARY CARDS -->
-                <VBox spacing="18" styleClass="content-card">
+                <!-- WELCOME BANNER -->
+                <HBox alignment="CENTER_LEFT"
+                      styleClass="welcome-banner">
+                    <VBox spacing="7" HBox.hgrow="ALWAYS">
+                        <Label text="Your campus essentials, all in one place."
+                               styleClass="banner-title"/>
+                        <Label text="Browse equipment, manage your requests, and keep track of your borrowed items."
+                               styleClass="banner-description"
+                               wrapText="true"/>
+                    </VBox>
+                    <Label text="HM"
+                           styleClass="banner-mark"/>
+                </HBox>
 
-                    <GridPane hgap="20">
+                <!-- SUMMARY -->
+                <VBox spacing="13">
+                    <Label text="BORROWING OVERVIEW"
+                           styleClass="eyebrow"/>
+
+                    <GridPane hgap="13" vgap="13">
                         <columnConstraints>
-                            <ColumnConstraints percentWidth="20"/>
-                            <ColumnConstraints percentWidth="20"/>
-                            <ColumnConstraints percentWidth="20"/>
-                            <ColumnConstraints percentWidth="20"/>
-                            <ColumnConstraints percentWidth="20"/>
+                            <ColumnConstraints percentWidth="25" hgrow="ALWAYS"/>
+                            <ColumnConstraints percentWidth="25" hgrow="ALWAYS"/>
+                            <ColumnConstraints percentWidth="25" hgrow="ALWAYS"/>
+                            <ColumnConstraints percentWidth="25" hgrow="ALWAYS"/>
                         </columnConstraints>
 
-                        <VBox spacing="10" GridPane.columnIndex="0">
-                            <Label text="Currently borrowed"
+                        <VBox spacing="12"
+                              styleClass="stat-card"
+                              GridPane.columnIndex="0">
+                            <Label text="CURRENTLY BORROWED"
                                    styleClass="stat-label"/>
                             <Label fx:id="borrowedCount"
                                    text="0"
                                    styleClass="stat-value"/>
+                            <Label text="Items in your possession"
+                                   styleClass="stat-description"/>
                         </VBox>
 
-                        <VBox spacing="10" GridPane.columnIndex="1">
-                            <Label text="Pending requests"
+                        <VBox spacing="12"
+                              styleClass="stat-card"
+                              GridPane.columnIndex="1">
+                            <Label text="PENDING REQUESTS"
                                    styleClass="stat-label"/>
                             <Label fx:id="pendingCount"
                                    text="0"
                                    styleClass="stat-value"/>
+                            <Label text="Awaiting approval"
+                                   styleClass="stat-description"/>
                         </VBox>
 
-                        <VBox spacing="10" GridPane.columnIndex="2">
-                            <Label text="Overdue"
+                        <VBox spacing="12"
+                              styleClass="stat-card"
+                              GridPane.columnIndex="2">
+                            <Label text="OVERDUE ITEMS"
                                    styleClass="stat-label"/>
                             <Label fx:id="overdueCount"
                                    text="0"
                                    styleClass="stat-value"/>
+                            <Label text="Past their due date"
+                                   styleClass="stat-description"/>
                         </VBox>
 
-                        <VBox spacing="10" GridPane.columnIndex="3">
-                            <Label text="Reserved"
+                        <VBox spacing="12"
+                              styleClass="stat-card"
+                              GridPane.columnIndex="3">
+                            <Label text="RESERVED ITEMS"
                                    styleClass="stat-label"/>
                             <Label fx:id="reservedCount"
                                    text="0"
                                    styleClass="stat-value"/>
+                            <Label text="Approved reservations"
+                                   styleClass="stat-description"/>
                         </VBox>
-
-                        <VBox spacing="10" GridPane.columnIndex="4">
-                            <Label text="Liabilities"
-                                   styleClass="stat-label"/>
-                            <Label fx:id="liabilityAmount"
-                                   text="₱0.00"
-                                   styleClass="stat-value"/>
-                        </VBox>
-
                     </GridPane>
                 </VBox>
 
-                <!-- ACTIVE BORROWS AND REQUESTS -->
-                <VBox spacing="18" styleClass="content-card">
-
+                <!-- ACTIVE RECORDS -->
+                <VBox spacing="17" styleClass="content-card">
                     <HBox alignment="CENTER_LEFT">
-                        <Label text="My active borrows &amp; requests"
-                               styleClass="section-title"/>
+                        <VBox spacing="4" HBox.hgrow="ALWAYS">
+                            <Label text="My active borrows &amp; requests"
+                                   styleClass="section-title"/>
+                            <Label text="Keep track of your latest transactions."
+                                   styleClass="section-subtitle"/>
+                        </VBox>
 
-                        <Region HBox.hgrow="ALWAYS"/>
-
-                        <Button text="View full history →"
-                                onAction="#showComingSoon"
+                        <Button text="View all requests  →"
+                                onAction="#showMyRequests"
                                 styleClass="text-button"/>
                     </HBox>
 
-                    <!-- TABLE HEADER -->
                     <GridPane styleClass="table-header">
                         <columnConstraints>
                             <ColumnConstraints percentWidth="25"/>
@@ -202,41 +226,45 @@
                             <ColumnConstraints percentWidth="18"/>
                         </columnConstraints>
 
-                        <Label text="Item" GridPane.columnIndex="0"/>
-                        <Label text="Category" GridPane.columnIndex="1"/>
-                        <Label text="Due date" GridPane.columnIndex="2"/>
-                        <Label text="Status" GridPane.columnIndex="3"/>
-                        <Label text="Action" GridPane.columnIndex="4"/>
+                        <Label text="ITEM" GridPane.columnIndex="0"/>
+                        <Label text="CATEGORY" GridPane.columnIndex="1"/>
+                        <Label text="DUE DATE" GridPane.columnIndex="2"/>
+                        <Label text="STATUS" GridPane.columnIndex="3"/>
+                        <Label text="ACTION" GridPane.columnIndex="4"/>
                     </GridPane>
 
-                    <Separator/>
+                    <Separator styleClass="soft-separator"/>
 
-                    <Label fx:id="activeRecordsMessage"
-                           text="No active borrows or pending requests yet."
-                           styleClass="empty-message"/>
-
+                    <VBox alignment="CENTER" spacing="8"
+                          styleClass="empty-state">
+                        <Label text="No active transactions"
+                               styleClass="empty-title"/>
+                        <Label fx:id="activeRecordsMessage"
+                               text="Your active borrows and pending requests will appear here."
+                               styleClass="empty-message"
+                               wrapText="true"/>
+                        <Button text="Browse available items"
+                                onAction="#showBrowseItems"
+                                styleClass="secondary-button"/>
+                    </VBox>
                 </VBox>
 
-                <!-- AVAILABLE ITEMS PREVIEW -->
-                <VBox spacing="18" styleClass="content-card">
-
+                <!-- AVAILABLE ITEMS -->
+                <VBox spacing="17" styleClass="content-card">
                     <HBox alignment="CENTER_LEFT">
-                        <VBox spacing="4">
-                            <Label text="Available to borrow"
+                        <VBox spacing="4" HBox.hgrow="ALWAYS">
+                            <Label text="Explore campus equipment"
                                    styleClass="section-title"/>
-
-                            <Label text="Popular campus equipment ready for reservation"
-                                   styleClass="page-subtitle"/>
+                            <Label text="Find the equipment you need for your academic activities."
+                                   styleClass="section-subtitle"/>
                         </VBox>
 
-                        <Region HBox.hgrow="ALWAYS"/>
-
-                        <Button text="See all items →"
-                                onAction="#showComingSoon"
+                        <Button text="Browse catalog  →"
+                                onAction="#showBrowseItems"
                                 styleClass="text-button"/>
                     </HBox>
 
-                    <GridPane hgap="14" vgap="14">
+                    <GridPane hgap="13" vgap="13">
                         <columnConstraints>
                             <ColumnConstraints percentWidth="25"/>
                             <ColumnConstraints percentWidth="25"/>
@@ -244,54 +272,68 @@
                             <ColumnConstraints percentWidth="25"/>
                         </columnConstraints>
 
-                        <VBox GridPane.columnIndex="0"
-                              styleClass="item-preview-card">
-                            <Label text="No items loaded"
+                        <VBox spacing="10"
+                              styleClass="item-preview-card"
+                              GridPane.columnIndex="0">
+                            <Label text="01" styleClass="item-number"/>
+                            <Label text="Electronics"
                                    styleClass="item-name"/>
-                            <Label text="Inventory will appear here."
-                                   styleClass="item-description"/>
+                            <Label text="Explore available electronic equipment."
+                                   styleClass="item-description"
+                                   wrapText="true"/>
                         </VBox>
 
-                        <VBox GridPane.columnIndex="1"
-                              styleClass="item-preview-card">
-                            <Label text="No items loaded"
+                        <VBox spacing="10"
+                              styleClass="item-preview-card"
+                              GridPane.columnIndex="1">
+                            <Label text="02" styleClass="item-number"/>
+                            <Label text="Tools &amp; Equipment"
                                    styleClass="item-name"/>
-                            <Label text="Inventory will appear here."
-                                   styleClass="item-description"/>
+                            <Label text="Find tools for your school activities."
+                                   styleClass="item-description"
+                                   wrapText="true"/>
                         </VBox>
 
-                        <VBox GridPane.columnIndex="2"
-                              styleClass="item-preview-card">
-                            <Label text="No items loaded"
+                        <VBox spacing="10"
+                              styleClass="item-preview-card"
+                              GridPane.columnIndex="2">
+                            <Label text="03" styleClass="item-number"/>
+                            <Label text="Learning Materials"
                                    styleClass="item-name"/>
-                            <Label text="Inventory will appear here."
-                                   styleClass="item-description"/>
+                            <Label text="Browse useful academic resources."
+                                   styleClass="item-description"
+                                   wrapText="true"/>
                         </VBox>
 
-                        <VBox GridPane.columnIndex="3"
-                              styleClass="item-preview-card">
-                            <Label text="No items loaded"
+                        <VBox spacing="10"
+                              styleClass="item-preview-card"
+                              GridPane.columnIndex="3">
+                            <Label text="04" styleClass="item-number"/>
+                            <Label text="Other Items"
                                    styleClass="item-name"/>
-                            <Label text="Inventory will appear here."
-                                   styleClass="item-description"/>
+                            <Label text="Discover more campus resources."
+                                   styleClass="item-description"
+                                   wrapText="true"/>
                         </VBox>
-
                     </GridPane>
                 </VBox>
 
-                <!-- BOTTOM ACTIONS -->
-                <HBox spacing="12">
-                    <Button text="Request an item"
-                            onAction="#showComingSoon"
-                            styleClass="primary-button"/>
-
-                    <Button text="Browse catalog"
-                            onAction="#showComingSoon"
+                <!-- LIABILITY NOTE -->
+                <HBox alignment="CENTER_LEFT"
+                      spacing="15"
+                      styleClass="liability-strip">
+                    <VBox spacing="4" HBox.hgrow="ALWAYS">
+                        <Label text="Need to check your account?"
+                               styleClass="section-title"/>
+                        <Label text="Review your account liabilities and clearance information."
+                               styleClass="section-subtitle"/>
+                    </VBox>
+                    <Button text="View liabilities"
+                            onAction="#showLiabilities"
                             styleClass="secondary-button"/>
                 </HBox>
 
             </VBox>
         </ScrollPane>
     </center>
-
 </BorderPane>
