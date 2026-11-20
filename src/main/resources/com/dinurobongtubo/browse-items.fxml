@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane
+    xmlns="http://javafx.com/javafx/27"
+    xmlns:fx="http://javafx.com/fxml/1"
+    fx:controller="com.dinurobongtubo.BrowseItemsController"
+    stylesheets="@browse-items.css"
+    styleClass="root">
+
+    <!-- LEFT SIDEBAR -->
+    <left>
+        <VBox prefWidth="250" styleClass="sidebar">
+
+            <VBox spacing="25">
+
+                <!-- BRAND -->
+                <HBox alignment="CENTER_LEFT" spacing="10">
+                    <Region prefWidth="22"
+                            prefHeight="22"
+                            styleClass="brand-square"/>
+
+                    <Label text="HiramMate"
+                           styleClass="brand-name"/>
+                </HBox>
+
+                <!-- NAVIGATION -->
+                <VBox spacing="5">
+
+                    <Button text="Dashboard"
+                            onAction="#showDashboard"
+                            styleClass="nav-button"
+                            maxWidth="Infinity"/>
+
+                    <Button text="Browse Items"
+                            styleClass="nav-button nav-button-active"
+                            maxWidth="Infinity"/>
+
+                    <Button text="My Requests"
+                            onAction="#showMyRequests"
+                            styleClass="nav-button"
+                            maxWidth="Infinity"/>
+
+                    <Button text="Borrowed &amp; Returns"
+                            onAction="#showBorrowedReturns"
+                            styleClass="nav-button"
+                            maxWidth="Infinity"/>
+
+                    <Button text="Liabilities"
+                            onAction="#showLiabilities"
+                            styleClass="nav-button"
+                            maxWidth="Infinity"/>
+
+                </VBox>
+            </VBox>
+
+            <Region VBox.vgrow="ALWAYS"/>
+
+            <!-- STUDENT PROFILE -->
+            <HBox alignment="CENTER_LEFT"
+                  spacing="10"
+                  styleClass="profile-card">
+
+                <Label fx:id="profileInitials"
+                       text="ST"
+                       styleClass="profile-initials"/>
+
+                <VBox spacing="3" HBox.hgrow="ALWAYS">
+
+                    <Label fx:id="profileName"
+                           text="Student Name"
+                           styleClass="profile-name"/>
+
+                    <Label fx:id="profileDetails"
+                           text="Student ID"
+                           styleClass="profile-details"/>
+
+                </VBox>
+
+                <Label text="●"
+                       styleClass="online-indicator"/>
+
+            </HBox>
+
+        </VBox>
+    </left>
+
+    <!-- MAIN CONTENT -->
+    <center>
+        <ScrollPane fitToWidth="true"
+                    styleClass="main-scroll"
+                    hbarPolicy="NEVER">
+
+            <VBox spacing="25"
+                  styleClass="main-content">
+
+                <!-- PAGE HEADER -->
+                <HBox alignment="CENTER_LEFT"
+                      spacing="15">
+
+                    <VBox spacing="5">
+
+                        <Label text="Browse items"
+                               styleClass="page-title"/>
+
+                        <Label text="Select available campus equipment and submit a borrow request."
+                               styleClass="page-subtitle"/>
+
+                    </VBox>
+
+                    <Region HBox.hgrow="ALWAYS"/>
+
+                    <Button text="+ Request custom item"
+                            onAction="#showComingSoon"
+                            styleClass="primary-button"/>
+
+                </HBox>
+
+                <!-- SEARCH AND CATEGORY FILTERS -->
+                <VBox spacing="12"
+                      styleClass="filter-panel">
+
+                    <TextField fx:id="searchField"
+                               promptText="Search by item name, code, or description..."
+                               styleClass="search-field"/>
+
+                    <!-- CATEGORY FILTERS -->
+                    <HBox spacing="8"
+                          alignment="CENTER_LEFT">
+
+                        <Button text="All"
+                                onAction="#showAllItems"
+                                styleClass="category-button category-active"/>
+
+                        <Button text="Electronics"
+                                onAction="#showElectronics"
+                                styleClass="category-button"/>
+
+                        <Button text="Laboratory"
+                                onAction="#showLaboratory"
+                                styleClass="category-button"/>
+
+                        <Button text="Engineering"
+                                onAction="#showEngineering"
+                                styleClass="category-button"/>
+
+                        <Button text="Sports"
+                                onAction="#showSports"
+                                styleClass="category-button"/>
+
+                    </HBox>
+
+                </VBox>
+
+                <!-- DATABASE ITEM CATALOG -->
+                <FlowPane fx:id="catalogGrid"
+                          hgap="16"
+                          vgap="16"
+                          prefWrapLength="850"
+                          styleClass="catalog-grid"/>
+
+            </VBox>
+
+        </ScrollPane>
+    </center>
+
+</BorderPane>

@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/27"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.dinurobongtubo.StaffLiabilitiesController"
+            stylesheets="@staff-liabilities.css"
+            prefWidth="1200"
+            prefHeight="760"
+            styleClass="items-root">
+
+    <left>
+        <VBox prefWidth="230"
+              spacing="20"
+              styleClass="sidebar">
+
+            <padding>
+                <Insets top="28" right="18" bottom="22" left="18"/>
+            </padding>
+
+            <VBox spacing="5">
+                <Label text="HiramMate" styleClass="brand-title"/>
+                <Label text="STAFF PORTAL" styleClass="brand-subtitle"/>
+            </VBox>
+
+            <Separator/>
+
+            <VBox spacing="8">
+
+                <Label text="MAIN MENU" styleClass="menu-heading"/>
+
+                <Button text="Dashboard"
+                        onAction="#showDashboard"
+                        styleClass="nav-button"
+                        maxWidth="Infinity"/>
+
+                <Button text="Items Management"
+                        onAction="#showItems"
+                        styleClass="nav-button"
+                        maxWidth="Infinity"/>
+
+                <Button text="Requests"
+                        onAction="#showRequests"
+                        styleClass="nav-button"
+                        maxWidth="Infinity"/>
+
+                <Button text="Borrowers &amp; Returns"
+                        onAction="#showBorrowersReturns"
+                        styleClass="nav-button"
+                        maxWidth="Infinity"/>
+
+                <Button text="Liabilities"
+                        styleClass="nav-button, nav-active"
+                        maxWidth="Infinity"/>
+
+            </VBox>
+
+            <Region VBox.vgrow="ALWAYS"/>
+
+            <VBox spacing="6">
+
+                <Label text="SIGNED IN AS"
+                       styleClass="menu-heading"/>
+
+                <Label fx:id="staffNameLabel"
+                       text="Staff Name"
+                       styleClass="staff-name"/>
+
+                <Label fx:id="staffIdLabel"
+                       text="Staff ID"
+                       styleClass="staff-id"/>
+
+                <Button text="Log Out"
+                        onAction="#logout"
+                        styleClass="logout-button"
+                        maxWidth="Infinity"/>
+
+            </VBox>
+
+        </VBox>
+    </left>
+
+    <center>
+        <VBox spacing="20" styleClass="main-area">
+
+            <padding>
+                <Insets top="30" right="32" bottom="30" left="32"/>
+            </padding>
+
+            <!-- PAGE TITLE -->
+            <VBox spacing="5">
+
+                <Label text="Student Liabilities"
+                       styleClass="page-title"/>
+
+                <Label text="Monitor penalties and outstanding student liabilities."
+                       styleClass="page-subtitle"/>
+
+            </VBox>
+
+            <!-- SUMMARY CARDS -->
+            <HBox spacing="14">
+
+                <VBox spacing="8"
+                      styleClass="summary-card"
+                      HBox.hgrow="ALWAYS">
+
+                    <Label text="PENDING LIABILITIES"
+                           styleClass="summary-label"/>
+
+                    <Label fx:id="pendingCountLabel"
+                           text="0"
+                           styleClass="summary-number"/>
+
+                </VBox>
+
+                <VBox spacing="8"
+                      styleClass="summary-card"
+                      HBox.hgrow="ALWAYS">
+
+                    <Label text="OUTSTANDING AMOUNT"
+                           styleClass="summary-label"/>
+
+                    <Label fx:id="outstandingAmountLabel"
+                           text="₱0.00"
+                           styleClass="summary-number"/>
+
+                </VBox>
+
+                <VBox spacing="8"
+                      styleClass="summary-card"
+                      HBox.hgrow="ALWAYS">
+
+                    <Label text="SETTLED LIABILITIES"
+                           styleClass="summary-label"/>
+
+                    <Label fx:id="settledCountLabel"
+                           text="0"
+                           styleClass="summary-number"/>
+
+                </VBox>
+
+            </HBox>
+
+            <!-- LIABILITY TABLE -->
+            <VBox spacing="14"
+                  styleClass="section-card"
+                  VBox.vgrow="ALWAYS">
+
+                <HBox alignment="CENTER_LEFT" spacing="12">
+
+                    <VBox spacing="4" HBox.hgrow="ALWAYS">
+
+                        <Label text="Liability Records"
+                               styleClass="section-title"/>
+
+                        <Label text="Select a record to settle an outstanding liability."
+                               styleClass="page-subtitle"/>
+
+                    </VBox>
+
+                    <Button text="Refresh"
+                            onAction="#loadLiabilities"
+                            styleClass="neutral-button"/>
+
+                </HBox>
+
+                <!-- SEARCH AND FILTER -->
+                <HBox spacing="12">
+
+                    <TextField fx:id="searchField"
+                               promptText="Search liability ID, student, item..."
+                               styleClass="search-field"
+                               HBox.hgrow="ALWAYS"/>
+
+                    <ComboBox fx:id="filterComboBox"
+                              prefWidth="155"
+                              styleClass="category-filter"
+                              promptText="Filter status"/>
+
+                </HBox>
+
+                <!-- TABLE -->
+                <TableView fx:id="liabilitiesTable"
+                           styleClass="data-table"
+                           VBox.vgrow="ALWAYS"
+                           prefHeight="350">
+
+                    <columns>
+
+                        <TableColumn fx:id="liabilityIdColumn"
+                                     text="Liability ID"
+                                     prefWidth="100"/>
+
+                        <TableColumn fx:id="studentColumn"
+                                     text="Student"
+                                     prefWidth="150"/>
+
+                        <TableColumn fx:id="studentIdColumn"
+                                     text="Student ID"
+                                     prefWidth="105"/>
+
+                        <TableColumn fx:id="itemColumn"
+                                     text="Affected Item"
+                                     prefWidth="145"/>
+
+                        <TableColumn fx:id="reasonColumn"
+                                     text="Violation Type"
+                                     prefWidth="175"/>
+
+                        <TableColumn fx:id="amountColumn"
+                                     text="Amount"
+                                     prefWidth="105"/>
+
+                        <TableColumn fx:id="statusColumn"
+                                     text="Status"
+                                     prefWidth="95"/>
+
+                    </columns>
+
+                    <placeholder>
+                        <Label text="No liability records found."
+                               styleClass="empty-message"/>
+                    </placeholder>
+
+                </TableView>
+
+                <!-- ACTION BUTTONS -->
+                <HBox alignment="CENTER_RIGHT" spacing="12">
+
+                    <Button text="Settle Liability"
+                            onAction="#settleLiability"
+                            styleClass="neutral-button"/>
+
+                    <Button text="Calculate &amp; Assess Liability"
+                            onAction="#openCalculateLiability"
+                            styleClass="primary-button"/>
+
+                </HBox>
+
+            </VBox>
+
+        </VBox>
+    </center>
+
+</BorderPane>

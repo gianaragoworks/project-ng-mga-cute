@@ -1,0 +1,242 @@
+.root {
+    -fx-font-family: "Inter", "Arial", sans-serif;
+}
+
+.app-background {
+    -fx-background-color: #F8F9FA;
+}
+
+/* SIDEBAR */
+.sidebar {
+    -fx-background-color: white;
+    -fx-border-color: transparent #E5E7EB transparent transparent;
+    -fx-border-width: 0 1 0 0;
+}
+
+.brand {
+    -fx-padding: 28 24 28 24;
+}
+
+.brand-mark {
+    -fx-background-color: #B93838;
+    -fx-background-radius: 6;
+}
+
+.brand-name {
+    -fx-font-size: 17px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1F2937;
+}
+
+.navigation {
+    -fx-padding: 0 16 0 16;
+}
+
+.menu-heading {
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #9CA3AF;
+    -fx-padding: 8 10 10 10;
+}
+
+.nav-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #4B5563;
+    -fx-font-size: 13px;
+    -fx-font-weight: 500;
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 12 14 12 14;
+    -fx-background-radius: 8;
+    -fx-cursor: hand;
+}
+
+.nav-button:hover {
+    -fx-background-color: #F3F4F6;
+    -fx-text-fill: #1F2937;
+}
+
+.nav-button-active {
+    -fx-background-color: #FDF2F2;
+    -fx-text-fill: #B93838;
+    -fx-font-weight: bold;
+}
+
+/* STUDENT PROFILE */
+.profile-container {
+    -fx-padding: 14 16 16 16;
+    -fx-border-color: #F3F4F6 transparent transparent transparent;
+}
+
+.profile-card {
+    -fx-background-color: #F8F9FA;
+    -fx-border-color: #E5E7EB;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-padding: 11;
+}
+
+.profile-initials {
+    -fx-background-color: #F9E8E8;
+    -fx-text-fill: #B93838;
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
+    -fx-alignment: CENTER;
+    -fx-min-width: 36px;
+    -fx-min-height: 36px;
+    -fx-background-radius: 8;
+}
+
+.profile-name {
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1F2937;
+}
+
+.profile-details {
+    -fx-font-size: 10px;
+    -fx-text-fill: #6B7280;
+}
+
+/* MAIN CONTENT */
+.main-scroll {
+    -fx-background-color: #F8F9FA;
+    -fx-background: #F8F9FA;
+    -fx-border-color: transparent;
+}
+
+.main-content {
+    -fx-padding: 34 40 34 40;
+}
+
+.page-title {
+    -fx-font-size: 25px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1F2937;
+}
+
+.page-subtitle {
+    -fx-font-size: 12px;
+    -fx-text-fill: #6B7280;
+}
+
+.search-field {
+    -fx-background-color: white;
+    -fx-border-color: #E5E7EB;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-padding: 10 12;
+    -fx-font-size: 12px;
+}
+
+.search-field:focused {
+    -fx-border-color: #B93838;
+}
+
+/* BUTTONS */
+.primary-button {
+    -fx-background-color: #B93838;
+    -fx-text-fill: white;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8;
+    -fx-padding: 11 17;
+    -fx-cursor: hand;
+}
+
+.primary-button:hover {
+    -fx-background-color: #9E2D2D;
+}
+
+.secondary-button {
+    -fx-background-color: white;
+    -fx-text-fill: #B93838;
+    -fx-border-color: #B93838;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-font-size: 12px;
+    -fx-padding: 11 17;
+    -fx-cursor: hand;
+}
+
+.secondary-button:hover {
+    -fx-background-color: #FDF2F2;
+}
+
+.text-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #B93838;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+
+.text-button:hover {
+    -fx-underline: true;
+}
+
+/* CONTENT CARDS */
+.content-card {
+    -fx-background-color: white;
+    -fx-border-color: #E5E7EB;
+    -fx-border-radius: 11;
+    -fx-background-radius: 11;
+    -fx-padding: 22;
+}
+
+.stat-label {
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #6B7280;
+}
+
+.stat-value {
+    -fx-font-size: 27px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1F2937;
+}
+
+.section-title {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1F2937;
+}
+
+/* ACTIVE RECORDS TABLE */
+.table-header {
+    -fx-padding: 0 0 10 0;
+}
+
+.table-header .label {
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #9CA3AF;
+}
+
+.empty-message {
+    -fx-font-size: 12px;
+    -fx-text-fill: #9CA3AF;
+    -fx-padding: 24 0 24 0;
+    -fx-max-width: Infinity;
+    -fx-alignment: CENTER;
+}
+
+/* AVAILABLE ITEM PREVIEW */
+.item-preview-card {
+    -fx-background-color: #F8F9FA;
+    -fx-border-color: #E5E7EB;
+    -fx-border-radius: 9;
+    -fx-background-radius: 9;
+    -fx-padding: 15;
+    -fx-spacing: 8;
+}
+
+.item-name {
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1F2937;
+}
+
+.item-description {
+    -fx-font-size: 10px;
+    -fx-text-fill: #9CA3AF;
+}
