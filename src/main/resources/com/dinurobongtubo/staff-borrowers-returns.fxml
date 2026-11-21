@@ -7,53 +7,87 @@
 <BorderPane xmlns="http://javafx.com/javafx/27"
             xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="com.dinurobongtubo.StaffBorrowersReturnsController"
-            stylesheets="@staff-borrowers-returns.css"
+            stylesheets="@student-dashboard.css, @staff-borrowers-returns.css"
             prefWidth="1200" prefHeight="760"
-            styleClass="page">
+            styleClass="app-background, page">
 
+    <!-- SIDEBAR (Matches StaffDashboard.fxml, StaffItems.fxml, StaffRequests.fxml & Student Views) -->
     <left>
-        <VBox prefWidth="230" spacing="20" styleClass="sidebar">
-            <padding>
-                <Insets top="28" right="18" bottom="22" left="18"/>
-            </padding>
+        <VBox prefWidth="255" minWidth="255" styleClass="sidebar">
 
-            <VBox spacing="5">
-                <Label text="HiramMate" styleClass="brand"/>
-                <Label text="STAFF PORTAL" styleClass="brand-subtitle"/>
+            <!-- BRAND HEADER -->
+            <HBox alignment="CENTER_LEFT" spacing="12" styleClass="brand">
+                <StackPane prefWidth="36" prefHeight="36" minWidth="36" minHeight="36" styleClass="brand-mark">
+                    <Label text="HM" styleClass="brand-mark-text" style="-fx-font-weight: 800; -fx-font-size: 14px; -fx-text-fill: #FFFFFF;"/>
+                </StackPane>
+                <VBox spacing="1" alignment="CENTER_LEFT">
+                    <Label text="HiramMate" styleClass="brand-name"/>
+                    <Label text="STAFF PORTAL" styleClass="brand-caption"/>
+                </VBox>
+            </HBox>
+
+            <Separator styleClass="sidebar-divider" mouseTransparent="true"/>
+
+            <!-- NAVIGATION MENU -->
+            <VBox spacing="6" styleClass="navigation">
+                <Label text="STAFF MENU" styleClass="menu-heading" mouseTransparent="true"/>
+
+                <Button text="  ⊞   Dashboard"
+                        onAction="#showDashboard"
+                        maxWidth="Infinity"
+                        styleClass="nav-button"/>
+
+                <Button text="  ◫   Items"
+                        onAction="#showItems"
+                        maxWidth="Infinity"
+                        styleClass="nav-button"/>
+
+                <Button text="  ◷   Requests"
+                        onAction="#showRequests"
+                        maxWidth="Infinity"
+                        styleClass="nav-button"/>
+
+                <Button text="  ⇄   Borrowers &amp; Returns"
+                        maxWidth="Infinity"
+                        styleClass="nav-button, nav-button-active"
+                        style="-fx-background-color: #B93838; -fx-text-fill: #FFFFFF; -fx-font-weight: bold;"/>
+
+                <Button text="  ⚠   Liabilities"
+                        onAction="#showLiabilities"
+                        maxWidth="Infinity"
+                        styleClass="nav-button"/>
             </VBox>
 
-            <Separator/>
+            <Region VBox.vgrow="ALWAYS" mouseTransparent="true"/>
 
-            <VBox spacing="8">
-                <Label text="MAIN MENU" styleClass="menu-heading"/>
+            <Separator styleClass="sidebar-divider" mouseTransparent="true"/>
 
-                <Button text="Dashboard" onAction="#showDashboard"
-                        styleClass="nav-button"/>
+            <!-- STAFF PROFILE FOOTER -->
+            <VBox spacing="8" styleClass="profile-container">
+                <Label text="SIGNED IN AS" styleClass="menu-heading" mouseTransparent="true"/>
 
-                <Button text="Items Management" onAction="#showItems"
-                        styleClass="nav-button"/>
+                <HBox spacing="11" alignment="CENTER_LEFT" styleClass="profile-card">
+                    <StackPane prefWidth="36" prefHeight="36" minWidth="36" minHeight="36" styleClass="profile-avatar">
+                        <Label text="MS" styleClass="profile-initials"/>
+                    </StackPane>
 
-                <Button text="Requests" onAction="#showRequests"
-                        styleClass="nav-button"/>
+                    <VBox spacing="2" HBox.hgrow="ALWAYS">
+                        <Label fx:id="staffNameLabel"
+                               text="Staff Name"
+                               styleClass="profile-name"/>
+                        <Label fx:id="staffIdLabel"
+                               text="Staff ID • Active"
+                               styleClass="profile-details"
+                               wrapText="true"/>
+                    </VBox>
+                </HBox>
 
-                <Button text="Borrowers &amp; Returns"
-                        styleClass="nav-button, nav-button-active"/>
-
-                <Button text="Liabilities" onAction="#showLiabilities"
-                        styleClass="nav-button"/>
+                <Button text="Log Out"
+                        onAction="#logout"
+                        maxWidth="Infinity"
+                        styleClass="logout-button"/>
             </VBox>
 
-            <Region VBox.vgrow="ALWAYS"/>
-
-            <VBox spacing="6">
-                <Label text="SIGNED IN AS" styleClass="menu-heading"/>
-                <Label fx:id="staffNameLabel" text="Staff Name"
-                       styleClass="staff-name"/>
-                <Label fx:id="staffIdLabel" text="Staff ID"
-                       styleClass="staff-id"/>
-                <Button text="Log Out" onAction="#logout"
-                        styleClass="logout-button" maxWidth="Infinity"/>
-            </VBox>
         </VBox>
     </left>
 

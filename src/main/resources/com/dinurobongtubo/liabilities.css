@@ -6,7 +6,7 @@
 /* SIDEBAR */
 
 .sidebar {
-    -fx-background-color: white;
+    -fx-border-color: transparent rgba(232, 233, 237, 0.4) transparent transparent; /* Subtle semi-transparent divider */
     -fx-padding: 28 18 20 18;
     -fx-border-color: transparent #E8E8E8 transparent transparent;
     -fx-border-width: 0 1 0 0;

@@ -12,6 +12,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Priority?>
 <?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
 <BorderPane xmlns="http://javafx.com/javafx/27"
@@ -24,64 +25,70 @@
 
     <!-- SIDEBAR -->
     <left>
-        <VBox prefWidth="250" minWidth="250" styleClass="sidebar">
+        <VBox prefWidth="255" minWidth="255" styleClass="sidebar">
 
-            <HBox alignment="CENTER_LEFT"
-                  spacing="12"
-                  styleClass="brand">
-                <Region prefWidth="28"
-                        prefHeight="28"
-                        minWidth="28"
-                        minHeight="28"
-                        styleClass="brand-mark"/>
-                <VBox spacing="2">
+            <!-- BRAND HEADER -->
+            <HBox alignment="CENTER_LEFT" spacing="12" styleClass="brand">
+                <StackPane prefWidth="36" prefHeight="36" minWidth="36" minHeight="36" styleClass="brand-mark">
+                    <Label text="HM" styleClass="brand-mark-text" style="-fx-font-weight: 800; -fx-font-size: 14px; -fx-text-fill: #FFFFFF;"/>
+                </StackPane>
+                <VBox spacing="1" alignment="CENTER_LEFT">
                     <Label text="HiramMate" styleClass="brand-name"/>
                     <Label text="STUDENT PORTAL" styleClass="brand-caption"/>
                 </VBox>
             </HBox>
 
-            <VBox spacing="7" styleClass="navigation">
-                <Label text="STUDENT MENU" styleClass="menu-heading"/>
+            <Separator styleClass="sidebar-divider" mouseTransparent="true"/>
 
-                <Button text="▦    Dashboard"
-                        onAction="#showDashboard"
+            <!-- NAVIGATION MENU -->
+            <VBox spacing="6" styleClass="navigation">
+                <Label text="STUDENT MENU" styleClass="menu-heading" mouseTransparent="true"/>
+
+                <Button fx:id="dashboardBtn"
+                        text="  ⊞   Dashboard"
                         maxWidth="Infinity"
-                        styleClass="nav-button nav-button-active"/>
+                        styleClass="nav-button, nav-button-active"
+                        style="-fx-background-color: #B93838; -fx-text-fill: #FFFFFF; -fx-font-weight: bold;"/>
 
-                <Button text="▤    Browse Items"
+                <Button fx:id="browseBtn"
+                        text="  ◫   Browse Items"
                         onAction="#showBrowseItems"
                         maxWidth="Infinity"
                         styleClass="nav-button"/>
 
-                <Button text="▧    My Requests"
+                <Button fx:id="requestsBtn"
+                        text="  ◷   My Requests"
                         onAction="#showMyRequests"
                         maxWidth="Infinity"
                         styleClass="nav-button"/>
 
-                <Button text="↻    Borrowed &amp; Returns"
+                <Button fx:id="borrowedBtn"
+                        text="  ⇄   Borrowed &amp; Returns"
                         onAction="#showBorrowedReturns"
                         maxWidth="Infinity"
                         styleClass="nav-button"/>
 
-                <Button text="₱    Liabilities"
+                <Button fx:id="liabilitiesBtn"
+                        text="  ⚠   Liabilities"
                         onAction="#showLiabilities"
                         maxWidth="Infinity"
                         styleClass="nav-button"/>
             </VBox>
 
-            <Region VBox.vgrow="ALWAYS"/>
+            <Region VBox.vgrow="ALWAYS" mouseTransparent="true"/>
 
-            <VBox styleClass="profile-container">
-                <Label text="SIGNED IN AS" styleClass="menu-heading"/>
-                <HBox spacing="11"
-                      alignment="CENTER_LEFT"
-                      styleClass="profile-card">
+            <Separator styleClass="sidebar-divider" mouseTransparent="true"/>
 
-                    <Label fx:id="profileInitials"
-                           text="ST"
-                           styleClass="profile-initials"/>
+            <!-- USER PROFILE FOOTER -->
+            <VBox spacing="8" styleClass="profile-container">
+                <Label text="SIGNED IN AS" styleClass="menu-heading" mouseTransparent="true"/>
 
-                    <VBox spacing="4" HBox.hgrow="ALWAYS">
+                <HBox spacing="11" alignment="CENTER_LEFT" styleClass="profile-card">
+                    <StackPane prefWidth="36" prefHeight="36" minWidth="36" minHeight="36" styleClass="profile-avatar">
+                        <Label fx:id="profileInitials" text="ST" styleClass="profile-initials"/>
+                    </StackPane>
+
+                    <VBox spacing="2" HBox.hgrow="ALWAYS">
                         <Label fx:id="profileName"
                                text="Student Name"
                                styleClass="profile-name"/>
@@ -92,6 +99,7 @@
                     </VBox>
                 </HBox>
             </VBox>
+
         </VBox>
     </left>
 

@@ -9,9 +9,11 @@
 
 /* SIDEBAR */
 
+/* SIDEBAR */
+
 .sidebar {
-    -fx-background-color: #FFFFFF;
-    -fx-border-color: transparent #E8E9ED transparent transparent;
+    -fx-background-color: transparent;
+    -fx-border-color: transparent rgba(232, 233, 237, 0.4) transparent transparent; /* Subtle semi-transparent divider */
     -fx-border-width: 0 1 0 0;
 }
 
@@ -60,13 +62,15 @@
 }
 
 .nav-button:hover {
-    -fx-background-color: #F5F5F6;
-    -fx-text-fill: #292D35;
+    -fx-background-color: rgba(185, 56, 56, 0.12); /* Soft transparent red tint on hover */
+    -fx-text-fill: #B93838;
 }
 
+/* Highlighted red when clicked/active */
+.nav-button:pressed,
 .nav-button-active {
-    -fx-background-color: #FDF0F0;
-    -fx-text-fill: #B93838;
+    -fx-background-color: #B93838;
+    -fx-text-fill: #FFFFFF;
     -fx-font-weight: bold;
 }
 
@@ -74,19 +78,19 @@
 
 .profile-container {
     -fx-padding: 15 15 18 15;
-    -fx-border-color: #ECEDEF transparent transparent transparent;
+    -fx-border-color: rgba(236, 237, 239, 0.4) transparent transparent transparent;
 }
 
 .profile-card {
-    -fx-background-color: #F8F9FA;
-    -fx-border-color: #E9EAED;
+    -fx-background-color: transparent;
+    -fx-border-color: rgba(233, 234, 237, 0.5);
     -fx-border-radius: 10;
     -fx-background-radius: 10;
     -fx-padding: 11;
 }
 
 .profile-initials {
-    -fx-background-color: #F9E5E5;
+    -fx-background-color: rgba(185, 56, 56, 0.15);
     -fx-text-fill: #B93838;
     -fx-font-size: 12px;
     -fx-font-weight: bold;

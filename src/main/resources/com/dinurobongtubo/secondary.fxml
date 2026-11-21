@@ -28,9 +28,9 @@
            style="-fx-font-size: 14px; -fx-text-fill: #666666;"/>
 
     <VBox spacing="7" maxWidth="350">
-        <Label text="Student ID"/>
+        <Label text="Student ID or Staff ID"/>
         <TextField fx:id="studentIdField"
-                   promptText="Enter your Student ID"
+                   promptText="Enter your Student ID or Staff ID"
                    prefHeight="40"/>
     </VBox>
 

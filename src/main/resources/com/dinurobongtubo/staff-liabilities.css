@@ -122,13 +122,13 @@
 .summary-number {
     -fx-font-size: 25px;
     -fx-font-weight: bold;
-    -fx-text-fill: #B52325;
+    -fx-text-fill: #000000;
 }
 
 .summary-number-danger {
     -fx-font-size: 25px;
     -fx-font-weight: bold;
-    -fx-text-fill: #DC3545;
+    -fx-text-fill: #000000;
 }
 
 /* TABLE SECTION */

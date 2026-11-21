@@ -158,7 +158,12 @@
                     <ComboBox fx:id="departmentComboBox"
                               promptText="Select department"
                               prefHeight="42"
-                              maxWidth="Infinity"/>
+                              maxWidth="Infinity"
+                              style="-fx-background-color: white;
+                                     -fx-border-color: #C8C8C8;
+                                     -fx-border-radius: 3;
+                                     -fx-background-radius: 3;"/>
+                            
 
                 </VBox>
 
@@ -235,7 +240,7 @@
                     <Label text="Borrow items"
                            style="-fx-font-size: 17px;
                                   -fx-font-weight: bold;
-                                  -fx-text-fill: #AD2638;"/>
+                                  -fx-text-fill: #050505;"/>
 
                     <Label text="Request school items"
                            style="-fx-font-size: 13px;

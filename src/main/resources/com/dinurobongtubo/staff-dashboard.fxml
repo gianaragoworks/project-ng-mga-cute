@@ -10,85 +10,95 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
 <BorderPane xmlns="http://javafx.com/javafx/21"
             xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="com.dinurobongtubo.StaffDashboardController"
-            prefWidth="1100.0"
-            prefHeight="700.0"
-            stylesheets="@staff-dashboard.css"
-            styleClass="dashboard-root">
+            prefWidth="1200.0"
+            prefHeight="760.0"
+            stylesheets="@staff-dashboard.css, @student-dashboard.css"
+            styleClass="app-background, dashboard-root">
 
-    <!-- SIDEBAR -->
+    <!-- SIDEBAR (100% Identical to all Staff & Student Views) -->
     <left>
-        <VBox prefWidth="250.0"
-              spacing="22.0"
-              styleClass="sidebar">
+        <VBox prefWidth="255" minWidth="255" styleClass="sidebar">
 
-            <padding>
-                <Insets top="30" right="20" bottom="22" left="20"/>
-            </padding>
-
-            <HBox alignment="CENTER_LEFT" spacing="12">
-                <Label text="HM" styleClass="brand-logo"/>
-                <Label text="HiramMate" styleClass="brand-title"/>
+            <!-- BRAND HEADER -->
+            <HBox alignment="CENTER_LEFT" spacing="12" styleClass="brand">
+                <StackPane prefWidth="36" prefHeight="36" minWidth="36" minHeight="36" styleClass="brand-mark">
+                    <Label text="HM" styleClass="brand-mark-text" style="-fx-font-weight: 800; -fx-font-size: 14px; -fx-text-fill: #FFFFFF;"/>
+                </StackPane>
+                <VBox spacing="1" alignment="CENTER_LEFT">
+                    <Label text="HiramMate" styleClass="brand-name"/>
+                    <Label text="STAFF PORTAL" styleClass="brand-caption"/>
+                </VBox>
             </HBox>
 
-            <Separator styleClass="sidebar-separator"/>
+            <Separator styleClass="sidebar-divider" mouseTransparent="true"/>
 
-            <VBox spacing="12">
-                <Button text="Dashboard"
+            <!-- NAVIGATION MENU -->
+            <VBox spacing="6" styleClass="navigation">
+                <Label text="STAFF MENU" styleClass="menu-heading" mouseTransparent="true"/>
+
+                <Button text="  ⊞   Dashboard"
                         onAction="#showDashboard"
                         maxWidth="Infinity"
-                        styleClass="nav-button nav-active"/>
+                        styleClass="nav-button, nav-button-active"
+                        style="-fx-background-color: #B93838; -fx-text-fill: #FFFFFF; -fx-font-weight: bold;"/>
 
-                <Button text="Items"
+                <Button text="  ◫   Items"
                         onAction="#showItems"
                         maxWidth="Infinity"
                         styleClass="nav-button"/>
 
-                <Button text="Requests"
+                <Button text="  ◷   Requests"
                         onAction="#showRequests"
                         maxWidth="Infinity"
                         styleClass="nav-button"/>
 
-                <Button text="Borrowers &amp; Returns"
+                <Button text="  ⇄   Borrowers &amp; Returns"
                         onAction="#showBorrowersReturns"
                         maxWidth="Infinity"
                         styleClass="nav-button"/>
 
-                <Button text="Liabilities"
+                <Button text="  ⚠   Liabilities"
                         onAction="#showLiabilities"
                         maxWidth="Infinity"
                         styleClass="nav-button"/>
             </VBox>
 
-            <VBox VBox.vgrow="ALWAYS"/>
+            <Region VBox.vgrow="ALWAYS" mouseTransparent="true"/>
 
-            <VBox spacing="9" styleClass="staff-profile-card">
-                <HBox alignment="CENTER_LEFT" spacing="10">
-                    <Label text="MS" styleClass="staff-avatar"/>
+            <Separator styleClass="sidebar-divider" mouseTransparent="true"/>
 
-                    <VBox spacing="3">
+            <!-- STAFF PROFILE FOOTER -->
+            <VBox spacing="8" styleClass="profile-container">
+                <Label text="SIGNED IN AS" styleClass="menu-heading" mouseTransparent="true"/>
+
+                <HBox spacing="11" alignment="CENTER_LEFT" styleClass="profile-card">
+                    <StackPane prefWidth="36" prefHeight="36" minWidth="36" minHeight="36" styleClass="profile-avatar">
+                        <Label text="MS" styleClass="profile-initials"/>
+                    </StackPane>
+
+                    <VBox spacing="2" HBox.hgrow="ALWAYS">
                         <Label fx:id="staffNameLabel"
                                text="Staff Member"
-                               styleClass="staff-name"/>
-
+                               styleClass="profile-name"/>
                         <Label fx:id="staffIdLabel"
-                               text="Staff ID"
-                               styleClass="staff-id"/>
+                               text="Staff ID • Active"
+                               styleClass="profile-details"
+                               wrapText="true"/>
                     </VBox>
                 </HBox>
 
-                <Label text="● Account: Active"
-                       styleClass="account-status"/>
+                <Button text="Log Out"
+                        onAction="#logout"
+                        maxWidth="Infinity"
+                        styleClass="logout-button"/>
             </VBox>
-
-            <Button text="Log Out"
-                    onAction="#logout"
-                    maxWidth="Infinity"
-                    styleClass="logout-button"/>
 
         </VBox>
     </left>
@@ -130,11 +140,11 @@
                            styleClass="stat-value"/>
                 </VBox>
 
-                <VBox HBox.hgrow="ALWAYS" styleClass="stat-card stat-danger">
+                <VBox HBox.hgrow="ALWAYS" styleClass="stat-card">
                     <Label text="Overdue" styleClass="stat-label"/>
                     <Label fx:id="overdueLabel"
                            text="0"
-                           styleClass="stat-value danger-value"/>
+                           styleClass="stat-value"/>
                 </VBox>
 
                 <VBox HBox.hgrow="ALWAYS" styleClass="stat-card">
@@ -148,7 +158,7 @@
                     <Label text="Pending" styleClass="stat-label"/>
                     <Label fx:id="pendingLabel"
                            text="0"
-                           styleClass="stat-value danger-value"/>
+                           styleClass="stat-value"/>
                 </VBox>
 
             </HBox>
