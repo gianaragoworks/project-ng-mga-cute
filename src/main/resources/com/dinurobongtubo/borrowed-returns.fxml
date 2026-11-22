@@ -43,7 +43,7 @@
                 <Label text="STUDENT MENU" styleClass="menu-heading" mouseTransparent="true"/>
 
                 <Button fx:id="btnDashboard"
-                        text="  ⊞   Dashboard"
+                        text="  ⊞   Gian"
                         onAction="#showDashboard"
                         maxWidth="Infinity"
                         styleClass="nav-button"/>
@@ -231,7 +231,9 @@
                                     maxWidth="Infinity"
                                     HBox.hgrow="ALWAYS"/>
 
-                           
+                            <Button text="Pass QR"
+                                    onAction="#showComingSoon"
+                                    styleClass="secondary-button"/>
                         </HBox>
 
                     </VBox>
@@ -309,3 +311,4 @@
     </center>
 
 </BorderPane>
+
